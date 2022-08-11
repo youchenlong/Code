@@ -1,0 +1,28 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="header">
+    <!-- 热门视频-动态更新-管理员手动调节 -->
+    <swiper indicator-dots="true" autoplay="true" interval="2000" duration="500">
+      <block wx:for="{{recommend}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item.image}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="body">
+    <!-- 标题 类别 作者 -->
+    <view class="search">
+      <input type="text"></input>
+      <button type="primary" size="mini">搜索</button>
+    </view>
+    <!-- 热门 土地 劳动（劳动纠纷） 农业 渔业 林业  -->
+    <view class="menu">
+      <block wx:for="{{menu_list}}">
+        <view class="menu-item">{{item.title}}</view>
+      </block>
+    </view>
+    <view class="main"></view>
+  </view>
+  <view class="footer">{{footer_message}}</view>
+</view>

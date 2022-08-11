@@ -1,0 +1,226 @@
+/* pages/index/index.wxss */
+.container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header{
+  height: 200rpx;
+  width: 90%;
+  margin: 0 auto;
+  background-color: skyblue;
+}
+.header swiper{
+  height: 200rpx;
+  width: 100%;
+}
+.header image{
+  width: 100%;
+  height: 200rpx;
+}
+.body{
+  height: 1200rpx;
+  width: 100%;
+  background-color: whitesmoke;
+  margin-top: 10rpx;
+  position: relative;
+  z-index: 1;
+}
+.search{
+  height: 100rpx;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+.search input{
+  display: block;
+  height: 60rpx;
+  float: left;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  border: 2rpx black solid;
+  border-radius: 5rpx;
+  border-bottom-right-radius: 0rpx;
+  border-top-right-radius: 0rpx;
+  border-right: 0rpx;
+}
+.search_button{
+  float: left;
+  height:64rpx;
+  line-height: 64rpx;
+  width: 150rpx;
+  margin: 20rpx 20rpx;
+  margin-left: 0rpx;
+  border-top-left-radius: 0rpx;
+  border-bottom-left-radius: 0rpx;
+  background-color: #B22222;
+  color: white;
+}
+/* 以下为搜索框下拉列表渲染 */
+.select_box{
+    border: 2rpx black solid;
+    border-radius: 10rpx;
+    display: block;
+    height: 60rpx;
+    float: left;
+    background: #fff;
+    width: 25%;
+    margin-left: 41rpx;
+    margin-top: 20rpx;
+    position: relative;
+}
+.select{
+    box-sizing: border-box;
+    width: 100%;
+    height: 70rpx;
+    line-height: 200rpx;
+    border:1px solid #efefef;
+    border-radius: 8rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 20rpx;
+}
+.select_text{
+    font-size: 30rpx;
+    flex: 1;
+}
+.select_img{
+    margin-left: 27rpx;
+    width: 30rpx;
+    height: 30rpx;
+    display: block;
+    transition:transform 0.3s;
+}
+.select_img_rotate{
+    transform:rotate(180deg); 
+}
+.option_box{
+    /*position: relative;*/
+    top: 60rpx;
+    width: 100%;
+    border:1px solid #efefef;
+    box-sizing: border-box;
+    height: 0;
+    overflow-y: auto;
+    border-top: 0;
+    background: #fff;
+    transition: height 0.3s;
+    position: absolute;
+    z-index: 3;   
+}
+.option{
+    display: block;
+    line-height: 40rpx;
+    font-size: 30rpx;
+    border-bottom: 1px solid #efefef;
+    padding: 10rpx;
+}
+/* 以下为一级菜单栏 */
+.nav1_title{
+    height:100rpx;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border-top: 2rpx solid gray;
+    border-bottom: 0.5rpx solid gray;
+    padding-top: 5rpx;
+}
+.nav1_tab{
+    width:50%;
+    height:100rpx;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+}
+.nav1_show{
+    text-align:center;
+    flex:1;
+    color:#000;
+    font-size:30rpx;
+    opacity: 0.5;
+    margin-top: 30rpx;
+    width: 100rpx;
+}
+.nav1_hidden{
+    text-align:center;
+    /*color:#DC143C;*/
+    color: #000;
+    flex:1;
+    font-size:35rpx;
+    margin-top: 30rpx;
+}
+.nav1_underline{
+    background:	#000;
+    width:45rpx;
+    height:6rpx;
+    margin-top:15rpx;
+    margin-left:75rpx;
+    border-radius:8rpx;
+}
+.nav1_view{
+    width:100%;
+}
+.footer{
+  height: 100rpx;
+  width: 100%;
+  line-height: 100rpx;
+  background-color: green;
+}
+/*以下为二级菜单栏*/
+.nav2_title{
+    height:80rpx;
+    background-color: #FFF0F5;
+    white-space: nowrap;
+    display: flex;  
+    flex-direction: row;
+    position: absolute;
+    z-index: 2;  
+}
+
+.za{
+    height: 100rpx;
+    width: 750rpx;
+    white-space: nowrap;
+}
+.zb_hidden{
+    text-align: center;
+    font-size: 30rpx;
+    display: inline-block;
+    padding: 0 11px;
+    margin-left: 20rpx;
+    background-color: #CD5C5C;
+    height: 45rpx;
+    margin-top: 18rpx;
+    color: white;
+    border-radius: 50rpx;
+ }
+.zb_show{
+    text-align: center;
+    display: inline-block;
+    font-size: 30rpx;
+    padding: 0 11px;
+    margin-top: 18rpx;
+    margin-left: 20rpx;
+    background-color: #F5F5F5;
+    height: 45rpx;
+    border-radius: 50rpx;
+    border: 0.1rpx solid #DCDCDC;
+ }
+/*以下为主体内容*/
+.main{
+    height:900rpx;
+}
+.video{
+    top:80rpx;
+    font-size: 30rpx;
+    position: relative;
+}
+.article{
+    top:80rpx;
+    font-size: 30rpx;
+    position: relative;
+}

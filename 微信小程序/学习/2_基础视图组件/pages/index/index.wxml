@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+  <icon type="success"></icon>
+  <icon type="success_no_circle"></icon>
+  <icon type="info"></icon>
+  <icon type="warn"></icon>
+  <icon type="waiting"></icon>
+  <icon type="cancel"></icon>
+  <icon type="download"></icon>
+  <icon type="search"></icon>
+  <icon type="clear"></icon>
+
+  <text>text组件</text>
+
+  <progress percent="50" show-info="true" activeColor="green" active="true" style="height:10rpx; width:100%"></progress>
+
+  <button size="mini" type="primary" >我是一个按钮</button>
+</view>

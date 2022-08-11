@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <button v-on:click="showInfo">{{name}}</button>
+        <button @click="printNumber(666)">输出数字</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = "false"
+
+        new Vue({
+            el: "#root",
+            data(){
+                return{
+                    name: "点我吧"
+                }
+            },
+            methods:{
+                showInfo(){
+                    alert("Hello World!")
+                },
+                printNumber(number){
+                    alert(number)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+/**index.wxss**/
+icon {
+  size: 40;
+}
+text {
+  color: red;
+}

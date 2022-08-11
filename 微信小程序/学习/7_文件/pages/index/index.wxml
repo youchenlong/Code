@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <input placeholder="请输入文件名"></input> -->
+  <button bindtap="downloadFile" type="primary">下载文件</button>
+  <button bindtap="uploadFile" type='default'>上传文件</button>
+</view>

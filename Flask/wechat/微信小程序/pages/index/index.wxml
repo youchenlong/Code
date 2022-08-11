@@ -1,0 +1,60 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="header">
+    <!-- 热门视频-动态更新-管理员手动调节 -->
+    <swiper indicator-dots="true" autoplay="true" interval="2000" duration="500">
+      <block wx:for="{{recommend}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item.image}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="body">
+    <view class="search">
+        <view class='select_box'>
+            <view class='select' catchtap='selectTap'>
+                <text class='select_text'>{{selectData[index1]}}</text>
+                <image class='select_img {{show&&"select_img_rotate"}}' src='gobottom.png'></image>   
+            </view>
+            <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx'>
+                <text class='option' style='{{index1==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text>
+            </view>
+        </view>
+      <input type="text"></input>
+      <button class="search_button">搜索</button>
+    </view>
+    <view class="nav1_title"><!-- 一级菜单栏 -->
+        <view class="nav1_tab">
+            <view wx:for="{{nav1_list}}" class="{{nav1_selected==index?'nav1_hidden':'nav1_show'}}" data-index='{{index}}' bindtap="nav1_selected">{{item}}
+                <view class="{{nav1_selected==index?'nav1_underline':''}}"></view>
+            </view>
+        </view>
+    </view>
+    <!-- 主体 -->
+    <swiper class="main" bindchange="bindchange" current="{{nav1_selected}}">
+        <block><swiper-item>
+            <view class="nav2_title"><!-- 二级菜单栏 -->
+                <scroll-view  class="za" scroll-into-view="{{ztoView}}" scroll-x="true" scroll-with-animation="true">
+                    <view class="{{nav2_selected==index?'zb_hidden':'zb_show'}}" wx:for="{{zlist_video}}" wx:key="index" id="{{'list' + index}}" data-index="{{index}}"bindtap="nav2_selected">{{item}}</view>
+                </scroll-view></view>
+            <view class="video"><text>视频区域</text></view>
+        </swiper-item>
+        <swiper-item>
+            <view class="nav2_title">
+            <scroll-view  class="za" scroll-into-view="{{ztoView}}" scroll-x="true" scroll-with-animation="true">
+                <view class="{{nav2_selected==index?'zb_hidden':'zb_show'}}" wx:for="{{zlist_article}}" wx:key="index" id="{{'list' + index}}" data-index="{{index}}"bindtap="nav2_selected">{{item}}</view>
+            </scroll-view></view>
+            <view class="article"><text>条文区域</text></view>
+        </swiper-item></block>
+    </swiper>
+    <!-- 热门 土地 劳动（劳动纠纷） 农业 渔业 林业  -->
+    <!--<view class="menu">
+      <block wx:for="{{menu_list}}">
+        <view class="menu-item">{{item.title}}</view>
+      </block>
+    </view>
+    <view class="main"></view>-->
+  </view>
+  <!--<view class="footer">{{footer_message}}</view>-->
+</view>

@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+<text>欢迎来到我的主页</text>
+<button bindtap="Grade" id="Grade">计算成绩等级</button>
+<button bindtap="sum1to100" id="sum1to100">计算1到100</button>
+</view>

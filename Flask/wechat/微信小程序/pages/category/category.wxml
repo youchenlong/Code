@@ -1,0 +1,14 @@
+<!--pages/category/category.wxml-->
+<!-- <view class="container">
+  <video src="https://boot-video.xuexi.cn/video/1001/p/c2a277fa17fae09ddf7b58b14a8f9e94-b5f78891110b45e786db840590066398-2.mp4"></video>
+</view> -->
+
+<!-- 农业 渔业 林业 畜牧业 劳动 土地 养老 养殖业 -->
+<view class="container">
+  <view class="menu">
+    <block wx:for="test">
+      <text>{{item.title}}</text>
+    </block>
+  </view>
+  <view class="main"></view>
+</view>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--
+            v-show
+            v-if（可以与template配合使用）
+        -->
+
+        <div v-if="n===1">div1</div>
+        <div v-else-if="n===2">div2</div>
+        <div v-else>div3</div>
+        
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data: {
+                n: 1
+            },
+            methods: {
+                
+            }
+        })
+    </script>
+</body>
+</html>

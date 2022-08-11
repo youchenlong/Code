@@ -1,0 +1,12 @@
+/**index.wxss**/
+text{
+  color:#3ed620;
+  border-style: solid;
+  border-color:#2ce21c;
+}
+#Grade{
+  background-color: #2db8b8;
+}
+#sum1to100{
+  background-color: #1af350;
+}

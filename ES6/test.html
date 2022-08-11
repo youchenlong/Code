@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body{
+            width: 1000px;
+            height: 500px;
+            padding: 100px;
+            background-color: aqua;
+        }
+
+        .out{
+            width: 200px;
+            height: 100px;
+            padding: 10%;
+            background-color: antiquewhite;
+        }
+
+        .inner{
+            width: 100px;
+            height: 50px;
+            padding: 10%;
+            background-color: aquamarine;
+        } */
+    </style>
+</head>
+<body>  
+    <script>
+        function rename(name){
+            let len = name.length;
+            let index = false;
+            let i;
+            for(i = 0;i < len; i++){
+                if(name[i] === '_'){
+                    index = true;
+                    break;
+                }
+            }
+            console.log(index);
+            if(index){
+                i = 0;
+                while(i < name.length){
+                    if(name[i] === '_'){
+                        name = name.replace(name[i], '');
+                        name = name.replace(name[i], name[i].toUpperCase());
+                        i++;
+                    }else{
+                        name = name.replace(name[i], name[i].toLowerCase());
+                        i++;
+                    }
+                }
+            }
+            else{
+                name = name.replace(name[0], name[0].toLowerCase());
+                console.log(name);
+            }
+            return name;
+        }
+       console.log(rename('test_variable'));
+    </script>
+</body>
+</html>

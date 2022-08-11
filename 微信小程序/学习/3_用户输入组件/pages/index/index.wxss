@@ -1,0 +1,9 @@
+/**index.wxss**/
+input {
+  border-style: solid;
+  border-color: green;
+}
+textarea {
+  border-style: solid;
+  border-color: green;
+}

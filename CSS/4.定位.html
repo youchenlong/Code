@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            z-index: 1;
+            background-color: #bfa;         
+        }
+
+        .box2{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: red;  
+        }
+    </style>
+</head>
+<body>
+    <!--
+        position
+            将元素放在任意位置，用于微调元素的位置
+            static      默认值
+            relative    相对定位
+            absolute    绝对定位
+            fixed       固定定位
+            sticky      粘滞定位
+            通过偏移量设置元素位置（top bottom left right） 
+            通过z-index设置元素层级(子元素永远比父元素层级高)
+            
+        相对定位 relative
+            元素不会脱离文档流
+            参照物为自身在文档流中的位置
+            相对定位会提升元素的层级
+
+        绝对定位 absolute
+            元素会脱离文档流
+            参照物为离它最近的开启了定位的祖先块元素(如果没有，则选择根元素html)
+            绝对定位会提升元素的层级
+
+        固定定位 fixed
+            元素会脱离文档流
+            参照物为浏览器视口
+            固定定位会提升元素的层级
+
+        粘滞定位 sticky
+            元素不会脱离文档流
+            参照物为自身在文档流中的位置
+            相对定位会提升元素的层级
+            元素到达某个位置时将其固定
+    -->
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

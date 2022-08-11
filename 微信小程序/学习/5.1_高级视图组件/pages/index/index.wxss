@@ -1,0 +1,16 @@
+/**index.wxss**/
+navigator {
+  border-style: solid;
+  border-color: green;
+}
+image {
+  border-style: solid;
+  border-color: green;
+  margin: 50rpx;
+}
+button {
+  margin: 20rpx;
+}
+video {
+  margin: 50rpx;
+}

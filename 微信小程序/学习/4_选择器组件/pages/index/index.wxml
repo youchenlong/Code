@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="container">
+  <picker mode="selector" value="{{index}}" range="{{data}}" bindchange="change">选择性别：{{data[index]}}</picker>
+
+  <picker mode="multiSelector" value="currentAddress" range="{{address}}" bindchange="changeAddress">地址选择：{{address[0][currentAddress[0]]}}, {{address[1][currentAddress[1]]}}</picker>
+
+  <picker mode="time" value="{{time}}" bindchange="changeTime">时间选择：{{time}}</picker>
+
+  <picker mode="date" value="{{date}}" bindchange="changeDate">日期选择：{{date}}</picker>
+
+  <picker mode="region" value="region" bindchange="changeRegion">地区选择：{{region}}</picker>
+</view>

@@ -1,0 +1,3 @@
+model_checkpoint_path: "REINFORCE-1200"
+all_model_checkpoint_paths: "REINFORCE-1100"
+all_model_checkpoint_paths: "REINFORCE-1200"

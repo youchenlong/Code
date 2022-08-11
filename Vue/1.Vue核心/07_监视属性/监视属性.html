@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监视属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--
+            监视属性 watch
+        -->
+        <div>今天天气很{{weather}}</div>
+        <button @click="changeWeather">切换天气</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data: {
+                isHot: true
+            },
+            computed: {
+                weather(){
+                    return this.isHot ? "炎热" : "凉爽"
+                }
+            },
+            methods: {
+                changeWeather(){
+                    this.isHot = !this.isHot
+                }
+            },
+            watch: {
+                // weather: {
+                //     // weather改变时自动调用
+                //     handler(newValue, oldValue){
+                //         console.log(newValue, oldValue)
+                //         console.log("天气改变了")
+                //     }
+                // }
+
+                weather(newValue, oldValue){
+                    console.log(newValue, oldValue)
+                    console.log("天气改变了")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

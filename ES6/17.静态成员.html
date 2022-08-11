@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function Phone() {
+
+        // }
+
+        // Phone.name = '手机';//属于类的属性不属于实例的对象的，静态成员
+        // Phone.change = function(){
+        //     console.log('我可以改变事件');
+        // }
+        // Phone.prototype.size = '6.7寸';
+        // let nokia = new Phone;
+        // console.log(nokia.name);
+        // console.log(nokia.size);
+
+        class Phone{
+            // 静态属性
+            static name = '手机';
+            static change(){
+                console.log('我可以改变世界');
+            }
+        }
+        let nokia = new Phone();
+        console.log(nokia.name);
+        console.log(Phone.name);
+    </script>
+</body>
+
+</html>

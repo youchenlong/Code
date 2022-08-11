@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .div1{
+            padding: 5px;
+            background-color: skyblue;
+        }
+        .div2{
+            padding: 5px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <!--
+            prevent: 阻止默认事件
+            stop: 阻止事件冒泡
+            once: 事件只触发一次
+        -->
+        <a :href="link" @click.prevent="showInfo">百度</a> 
+
+        <div class="div1" @click="showMsg(1)">
+            div1
+            <div class="div2" @click.stop="showMsg(2)">
+                div2
+            </div>
+        </div>
+        
+        <button @click.once="printNumber(666)">点我吧</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = "false"
+
+        new Vue({
+            el: "#root",
+            data(){
+                return{
+                    link: "http://www.baidu.com"
+                }
+            },
+            methods:{
+                showInfo(){
+                    alert("即将跳转到百度!")
+                },
+                showMsg(msg){
+                    alert(msg)
+                },
+                printNumber(number){
+                    alert(number)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

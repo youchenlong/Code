@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+
+<scroll-view class="scroll" scroll-y scroll-x>
+  <view class="sub-view">滚动视图组件</view>
+  <view class="sub-view"></view>
+</scroll-view>
+
+<swiper class="posts-swiper" indicator-dots="true" autoplay="true" interval="2000" circular="true">
+  <swiper-item>
+    <view class="posts-swiper-view">轮播组件1</view>
+  </swiper-item>
+  <swiper-item>
+    <view class="posts-swiper-view">轮播组件2</view>
+  </swiper-item>
+</swiper>
+
+<movable-area class="area">
+  <movable-view class="view" direction="all" out-of-bounds="true">可拖拽组件</movable-view>
+</movable-area>
+
+</view>

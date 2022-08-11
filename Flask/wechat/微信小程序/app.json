@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/test/test",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/home/home",
+    "pages/category/category",
+    "pages/play/play"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "乡村普法小程序",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#aaaaaa",
+    "selectedColor": "#2E87E4",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "static/images/index.png",
+        "iconPath": "static/images/index_normal.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "selectedIconPath": "static/images/category.png",
+        "iconPath": "static/images/category_normal.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "用户中心",
+        "selectedIconPath": "static/images/home.png",
+        "iconPath": "static/images/home_normal.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

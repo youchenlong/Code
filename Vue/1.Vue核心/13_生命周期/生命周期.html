@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        初始化 生命周期 和 事件
+            beforeCreate
+        初始化 数据监测 和 数据代理
+            created
+        解析模板 并生成虚拟DOM
+            beforeMount
+        虚拟DOM 转换为 真实DOM 插入页面
+            ***mounted***   初始化工作（发送ajax请求，启动定时器，绑定自定义事件，订阅消息）
+        数据更新，但页面未更新
+            beforeUpdate
+        新的虚拟DOM 与 旧的虚拟DOM 进行对比，完成页面更新
+            updated
+        即将销毁
+            ***beforeDestroy*** 收尾工作（清除定时器，解绑自定义事件，取消订阅消息）
+        销毁完成
+            destroyed
+    -->
+    <div id="root">
+        <h1 :style="{opacity}">Hello World</h1>
+        <button @click="stop">停止</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                opacity: 1
+            },
+            methods: {
+                stop(){
+                    this.$destroy()
+                }
+            },
+            // beforeCreate(){
+            //     console.log("beforeCreate")
+            // },
+            // created(){
+            //     console.log("created")
+            // },
+            // beforeMount(){
+            //     console.log("beforeMount")
+            // },
+            mounted(){
+                console.log("mounted")
+                this.timer = setInterval(()=>{
+                    this.opacity -= 0.01
+                    if(this.opacity <= 0) this.opacity = 1
+                }, 16)
+            },
+            // beforeUpdate(){
+            //     console.log("beforeUpdate")
+            // },
+            // updated(){
+            //     console.log("updated")
+            // },
+            beforeDestroy(){
+                console.log("beforeDestroy")
+                clearInterval(this.timer)
+            },
+            // destroyed(){
+            //     console.log("destroyed")
+            // }
+        })
+
+    </script>
+</body>
+</html>

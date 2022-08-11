@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--存在安全隐患：xss攻击-->
+        <div v-html="str"></div>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data: {
+                str: "<div>下方评论区输入留言</div><textarea></textarea><br/><button onclick='alert(document.cookie)'>点我试试</button>"
+            },
+            methods: {
+
+            }
+        })
+
+    </script>
+</body>
+</html>

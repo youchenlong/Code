@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--
+            MVVM模型
+            数据绑定：将页面数据与视图关联起来
+            数据劫持：每一次更新数据时，执行更新视图操作(Object.defineProperty)           
+        -->
+        单向数据绑定：<input type="text" v-bind:value="name">
+        <br/>
+        双向数据绑定：<input type="text" v-model:value="name">
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data(){
+                console.log(this)
+                return{
+                    name: "atguigu"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

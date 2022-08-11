@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-once</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        初次渲染后视为静态资源
+    -->
+    <div id="root">
+        <div v-once>初始值：{{n}}</div>
+        <div>当前值：{{n}}</div>
+        <button @click="n++">点我+1</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data: {
+                n: 1
+            },
+            methods: {
+                
+            }
+        })
+
+    </script>
+</body>
+</html>

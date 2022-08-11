@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueComponent</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        组件中的 this 指向 VueComponent
+        vc.prototype.__proto__ === Vue.__proto__  让 VueComponent的实例vc 可以访问 Vue原型 上的属性和方法
+    -->
+    <div id="root">
+        <!--3.使用组件-->
+        <School></School>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        /*1.创建组件*/
+        const School = Vue.extend({
+            template: `
+                <div>
+                    <h2>{{name}}</h2>
+                    <h2>{{address}}</h2>
+                </div>
+            `,
+            data(){
+                return{
+                    name: "尚硅谷",
+                    address: "北京"
+                }
+            },
+            mounted(){
+                console.log(this)
+            }
+        })
+
+        const vm = new Vue({
+            el: "#root",
+            /*2.注册组件(局部注册)*/
+            components: {
+                School
+            }
+        })
+    </script>
+</body>
+</html>

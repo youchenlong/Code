@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class="container">
+  <button type="primary" bindtap="getRequest">网络请求</button>
+</view>

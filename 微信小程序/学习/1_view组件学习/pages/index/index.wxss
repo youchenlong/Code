@@ -1,0 +1,40 @@
+/**index.wxss**/
+.container{
+  display:flex;
+  flex-direction:column;
+}
+.sub-view{
+  text-align: center;
+  background-color: yellow;
+  margin-top: 20rpx;
+  width: 750rpx;
+  height: 200rpx;
+}
+.scroll{
+  background-color: green;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+  width:600rpx;
+  height:300rpx;
+}
+.area{
+  background-color: yellow;
+  width:750rpx;
+  height:300rpx;
+}
+.view{
+  background-color: green;
+  width:200rpx;
+  height: 100rpx;
+}
+.posts-swiper{
+  background-color: yellow;
+  width: 750rpx;
+  height: 300rpx;
+  margin-bottom: 50rpx;
+}
+.posts-swiper-view{
+  background-color: green;
+  width: 750rpx;
+  height: 300rpx;
+}

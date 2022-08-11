@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // ... 扩展运算符能将数组转换为逗号分割的参数序列
+        // const tf = ['易烊千玺','王源','王俊凯'];//=>'易烊千玺','王源','王俊凯'
+
+        // function chunwan(){
+        //     console.log(arguments);
+        // }
+        // chunwan(...tf);//chunwan('易烊千玺','王源','王俊凯')
+
+        // 应用
+        // 数组的合并
+        // const kz = ['王太利','肖央'];
+        // const fh = ['曾毅','玲花'];
+        // const kzfh = [...kz,...fh];
+        // console.log(kzfh);
+
+        // 数组的克隆
+        // const a = [1,2,3];
+        // const b = [...a];
+        // console.log(b);
+
+        // 将伪数组转换成真正的数组
+        const divs = document.querySelectorAll('div');
+        const divArr = [...divs];
+        console.log(divArr);
+    </script>
+</body>
+</html>

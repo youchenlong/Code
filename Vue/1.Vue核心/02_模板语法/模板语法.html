@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--插值语法：解析标签体内容-->
+        <h1>{{name}}</h1>
+        <!--指令语法：解析标签（标签属性、标签体内容、绑定事件）-->
+        <a v-bind:href="school.url">{{school.name}}</a>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data(){
+                return{
+                    name: "jack",
+                    school: {
+                        name: "尚硅谷",
+                        url: "http://www.atguigu.com"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

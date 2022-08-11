@@ -1,0 +1,37 @@
+{
+  "C_Cpp_Runner.cCompilerPath": "C:\\mingw64\\bin\\gcc.exe",
+  "C_Cpp_Runner.cppCompilerPath": "C:\\mingw64\\bin\\g++.exe",
+  "C_Cpp_Runner.warnings": [
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic"
+  ],
+  "C_Cpp_Runner.compilerArgs": [],
+  "C_Cpp_Runner.includePaths": [],
+  "C_Cpp_Runner.linkerArgs": [],
+  "C_Cpp_Runner.cStandard": "",
+  "C_Cpp_Runner.cppStandard": "",
+  "C_Cpp_Runner.excludeSearch": [],
+  "C_Cpp_Runner.enableWarnings": true,
+  "C_Cpp_Runner.warningsAsError": false,
+  "files.associations": {
+    "stdlib.h": "c",
+    "alist.h": "c",
+    "toggle_case.h": "c",
+    "stdio.h": "c",
+    "matrix.h": "c",
+    "cstdlib": "c",
+    "limits.h": "c",
+    "stdint.h": "c",
+    "stdint-gcc.h": "c",
+    "llist.h": "c",
+    "pthread.h": "c",
+    "process.h": "c",
+    "bst.h": "c",
+    "bst_lqueue.h": "c",
+    "cstdio": "c"
+  },
+  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp_Runner.debuggerPath": "C:\\mingw64\\bin\\gdb.exe",
+  "C_Cpp_Runner.makePath": "C:\\mingw64\\bin\\make.exe"
+}

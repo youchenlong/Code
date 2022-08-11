@@ -1,0 +1,11 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="userinfo">
+    个人信息
+  </view>
+  <view class="">
+    <view>历史</view>
+    <view>收藏</view>
+    <view>我的评论</view>
+  </view>
+</view>

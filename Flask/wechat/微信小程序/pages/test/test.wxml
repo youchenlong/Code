@@ -1,0 +1,8 @@
+<!--pages/test/test.wxml-->
+<view class="container">
+  <view class="body">
+    <view class="search">
+      <view>{{target_url}}</view>
+    </view>
+  </view>
+</view>

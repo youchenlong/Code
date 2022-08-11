@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据代理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--
+            数据代理：通过一个 对象代理 提供对 另一个对象 中数据的操作
+            体现：将一个普通js对象传入Vue实例作为data选项
+            模板语法：插值语法 指令语法
+        -->
+        <h1>{{name}}</h1>
+        <h1>{{address}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = "false"
+
+        const vm = new Vue({
+            el: "#root", 
+            data: {
+                name: "尚硅谷123",
+                address: "宏福科技园123"
+            }
+        })
+    </script>
+</body>
+</html>

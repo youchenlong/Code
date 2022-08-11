@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--
+            常用按键别名
+            回车 => enter
+            删除 => delete
+            退出 => esc
+            空格 => space
+            换行 => tab
+            上 => up
+            下 => down
+            左 => left
+            右 => right
+
+            系统修饰键--配合keyup或keydown使用
+            ctrl
+            alt
+            shift
+            win
+        -->
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+        <input type="text" placeholder="按下ctrl+y提示输入" @keyup.ctrl.y="showInfo">
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        new Vue({
+            el: "#root",
+            data(){
+                return{
+
+                }
+            },
+            methods:{
+                showInfo(e){
+                    console.log(e.target.value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非单文件组件</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--3.使用组件-->
+        <School></School>
+        <hr>
+        <Student></Student>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        /*1.创建组件*/
+        const School = Vue.extend({
+            template: `
+                <div>
+                    <h2>{{name}}</h2>
+                    <h2>{{address}}</h2>
+                </div>
+            `,
+            data(){
+                return{
+                    name: "尚硅谷",
+                    address: "北京"
+                }
+            }
+        })
+
+        const Student = Vue.extend({
+            template: `
+                <div>
+                    <h2>{{name}}</h2>
+                    <h2>{{age}}</h2>
+                </div>
+            `,
+            data(){
+                return{
+                    name: "张三",
+                    age: 18
+                }
+            }
+        })
+
+        new Vue({
+            el: "#root",
+            /*2.注册组件(局部注册)*/
+            components: {
+                School,
+                Student
+            },
+            methods: {
+                
+            }
+        })
+    </script>
+</body>
+</html>

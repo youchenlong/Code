@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            float: left;
+        }
+        .box2{
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        浮动的特点：
+            1.浮动元素会脱离文档流，不占据文档流位置
+            2.浮动元素会向父元素的左侧或右侧浮动，但不会移出父元素
+            3.浮动元素不会超过上一个浮动元素
+            4.浮动元素不会盖住文字
+
+            用途：浮动可用于水平方向的布局，文字环绕
+            
+            问题：高度塌陷
+            解决方法:   clearfix  --  .clearfix::before, .clearfix::after{content: ''; display: table; clear: both;}                           
+                        开启BFC   --  overflow: auto/hidden
+                        
+    -->
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>

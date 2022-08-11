@@ -1,0 +1,23 @@
+/* pages/login/login.wxss */
+
+.container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 200px 0;
+}
+
+/* 垂直居中 */
+.userInfo{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+/* 图片设置为圆形 */
+.avatarUrl{
+  width:200rpx;
+  height:200rpx;
+  border-radius:50%;
+}
