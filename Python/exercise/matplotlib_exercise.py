@@ -2,12 +2,12 @@ import numpy as np
 # matplotlib
 import matplotlib.pyplot as plt
 def plot(x,y,*args):
-    ax, title, xlabel, ylabel, legend = args
+    ax, title, xlabel, ylabel, label = args
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
-    ax.plot(x,y,'.')
-    ax.legend([legend], 'upper right')
+    ax.plot(x,y,'.',label=label)
+    ax.legend()
 fig, axes = plt.subplots(3,2)
 # 点线图
 x = np.linspace(-np.pi, np.pi, 100)

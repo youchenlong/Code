@@ -10,7 +10,7 @@ class Sarsa():
         self.min_alpha = 0.01
         self.gamma = 1.0
         self.epsilon = 0.05
-        self.num_episodes=2000
+        self.num_episodes=1000
         self.env = self.load_env()
         self.nA = self.env.action_space.n
         self.Q = defaultdict(lambda : np.zeros([self.nA]))

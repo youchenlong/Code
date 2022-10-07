@@ -6,7 +6,7 @@ import time
 import sys
 
 class Sarsa():
-    def __init__(self, alpha=0.01, gamma=1.0, epsilon=0.1, episodes=10000):
+    def __init__(self, alpha=0.01, gamma=1.0, epsilon=0.1, episodes=3000):
         self.alpha = alpha
         self.gamma = gamma
         self.epsilon = epsilon
@@ -16,9 +16,8 @@ class Sarsa():
         self.Q = defaultdict(lambda : np.zeros(self.nA))
         self.policy = self.make_random_policy(self.nA)
     def load_env(self):
-        env = gym.make('CliffWalking-v0')
-        # env = gym.make('Blackjack-v1')
-        # env = gym.make('FrozenLake-v1')
+        # env = gym.make('CliffWalking-v0')
+        # env = gym.make('FrozenLake-v0')
         return env
     def make_random_policy(self, nA):
         def policy_fn(observation):
@@ -62,6 +61,7 @@ class Sarsa():
             total_reward += reward 
             if render:
                 self.env.render()
+                time.sleep(0.3)
             if done:
                 break
             state = next_state

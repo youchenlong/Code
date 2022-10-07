@@ -1,6 +1,7 @@
 import gym
 import numpy as np
 import time
+import sys
 from collections import defaultdict
 
 def make_random_policy(nA):
@@ -64,9 +65,11 @@ def run_game(env, policy, episodes):
     print(win_ratio)
 
 if __name__ == '__main__':
-    env = gym.make('Blackjack-v1')
+    env = gym.make('Blackjack-v0')
+
     random_policy = make_random_policy(env.action_space.n)
     run_game(env, policy=random_policy, episodes=500)
-    Q, policy = mc_control_importance_sampling(env, num_episodes=500, behavior_policy=random_policy)
+
+    Q, policy = mc_control_importance_sampling(env, num_episodes=1000, behavior_policy=random_policy)
     run_game(env, policy=policy, episodes=500)
     env.close()

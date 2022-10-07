@@ -2,6 +2,8 @@ import gym
 import time
 import numpy as np
 
+np.random.seed(2)
+
 def value_iteration(env, threshold=1e-4, gamma=1.0):
     env.reset()
     start = time.time()
@@ -30,14 +32,13 @@ def play_game(env, policy, episodes=1, timesteps=150):
             action = policy[state]
             state, reward, done, info = env.step(action)
             env.render()
-            time.sleep(1)
+            time.sleep(0.1)
             if done:
                 break
 
 if __name__ == '__main__':
-    env = gym.make('FrozenLake-v1')
+    env = gym.make('FrozenLake-v0')
     value_table, policy = value_iteration(env, gamma=1.0)
     print(value_table.reshape(4,4))
-    time.sleep(10)
     play_game(env, policy)
     env.close()

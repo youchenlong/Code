@@ -6,7 +6,7 @@ import time
 import sys
 
 class Q_learning():
-    def __init__(self, epsilon=0.1, alpha=0.01, gamma=1.0, episodes=50000):
+    def __init__(self, epsilon=0.1, alpha=0.01, gamma=1.0, episodes=3000):
         self.epsilon = epsilon
         self.alpha = alpha
         self.gamma = gamma
@@ -63,6 +63,7 @@ class Q_learning():
             total_reward += reward 
             if render:
                 self.env.render()
+                time.sleep(0.2)
             if done:
                 break
             state = next_state

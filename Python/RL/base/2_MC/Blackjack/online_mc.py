@@ -5,6 +5,8 @@ import time
 import sys
 from collections import defaultdict
 
+np.random.seed(2)
+
 def make_random_policy(nA):
     def policy_fn(observation):
         A = np.ones(nA)/nA
@@ -67,15 +69,15 @@ def run_game(env, policy, episodes):
 if __name__ == '__main__':
     # print('\n'.join([env_spec.id for env_spec in envs.registry.all()]))
 
-    env = gym.make('Blackjack-v1')
+    env = gym.make('Blackjack-v0')
 
     # 随机策略
     # policy = make_random_policy(env.action_space.n)
-    # run_game(env, policy=policy, episodes=50000)
+    # run_game(env, policy=policy, episodes=500)
 
     # 在线蒙特卡罗
-    Q, policy = mc_control_greedy_policy(env, num_episodes=50000, epsilon=0.1)
-    run_game(env, policy=policy, episodes=50000)
+    Q, policy = mc_control_greedy_policy(env, num_episodes=50000, epsilon=0.01)
+    run_game(env, policy=policy, episodes=500)
     
     env.close()
     

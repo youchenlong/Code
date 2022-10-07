@@ -130,3 +130,5 @@ a = np.random.poisson(lam=2.5,size=[1000000])
 a = np.random.uniform(low=0.0, high=1.0, size=[10000])
 # 随机抽样
 a = np.random.choice(np.arange(5),size=[3],replace=False,p=np.ones([5])/5)
+# 随机整数
+a = np.random.randint(low=0, high=100, size=10)

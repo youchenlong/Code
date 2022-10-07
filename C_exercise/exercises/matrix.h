@@ -9,6 +9,7 @@ typedef struct{
 }matrix;
 
 void create(matrix *m, int row, int col);                       // 创建
+void free_matrix(matrix *m);                                           // 释放
 void init_matrix(matrix *m);                                    // 初始化
 matrix add(matrix A, matrix B);                                 // 加法
 matrix sub(matrix A, matrix B);                                 // 减法
@@ -43,6 +44,15 @@ void create(matrix *m, int row, int col){
             m->matrix[i][j] = 0;
         }
     }  
+}
+
+void free_matrix(matrix *m){
+    for(int i = 0; i < m->row; i++){
+        free(m->matrix[i]);
+        m->matrix[i] = NULL;
+    }
+    free(m->matrix);
+    m->matrix = NULL;
 }
 
 void init_matrix(matrix *m){
