@@ -1,3 +1,6 @@
+import random
+random.seed(1)
+random.randint()
 arr = [2, 1, 3, 5, 4, 6, 8, 7, 10, 9]
 
 def bubbleSort(arr):
@@ -30,9 +33,7 @@ def selectionSort(arr):
                 k = j
         arr[i], arr[k] = arr[k], arr[i]
 
-
-
 # bubbleSort(arr)
-insertSort(arr)
+# insertSort(arr)
 # selectionSort(arr)
 print(arr)
