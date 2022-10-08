@@ -27,7 +27,7 @@ def Prim(graph):
     candidate = list(graph.nodes)[1:]
     n = graph.number_of_nodes()
     for _ in range(n - 1):
-        u, v, min_weight = 0, 0, 10000
+        u, v, min_weight = 0, 0, float('inf')
         for i in select:
             for j in candidate:
                 if graph.has_edge(i, j) and graph[i][j]['weight'] < min_weight:
