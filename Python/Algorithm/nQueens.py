@@ -1,4 +1,4 @@
-class nQueens:
+class n_queens:
     def __init__(self, n):
         self.n = n
         self.solutions = []
@@ -10,6 +10,7 @@ class nQueens:
         return True
     def dfs(self, k):
         if k == self.n:
+            print('places:', self.places)
             self.solutions.append(self.places.copy())
             return
         for j in range(self.n):
@@ -19,6 +20,6 @@ class nQueens:
     def solve(self):
         self.dfs(0)
 
-q = nQueens(4)
+q = n_queens(4)
 q.solve()
-print(q.solutions)
+print('solutions:', q.solutions)
