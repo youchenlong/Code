@@ -9,7 +9,7 @@ class graphColoring:
         self.colors = [-1 for _ in range(self.n)]
         self.solutions = []
     def valid(self, k):
-        for node in list(graph.adj[k+1]):
+        for node in list(self.graph.adj[k+1]):
             if self.colors[k] == self.colors[node-1]:
                 return False
         return True
