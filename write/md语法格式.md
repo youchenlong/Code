@@ -138,3 +138,56 @@ $x1+x2+x3+\cdots+x_{n}$
 ### 7.逻辑运算符号
 
 $\because$ $\therefore$ $\forall$ $\exists$
+
+### 8.矩阵
+
+$$
+\begin{matrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{matrix}
+$$
+
+$$
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{pmatrix}
+$$
+
+$$
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{bmatrix}
+$$
+
+$$
+\begin{Bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{Bmatrix}
+$$
+
+$$
+\begin{vmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{vmatrix}
+$$
+
+### 9.约束方程
+
+$$
+\begin{align*}
+min & \ f(x) \\
+s.t. 
+& \ g_i(x) \le 0, i \in I \\
+& \ h_i(x)=0, i \in E \\
+\end{align*}
+$$
