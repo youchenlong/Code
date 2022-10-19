@@ -47,11 +47,11 @@ class Sarsa_lambda():
             # Eligibility--资格迹
             E = defaultdict(lambda : np.zeros(self.nA))
             while True:
-                # epsilon-greedy-policy, 采样
+                # epsilon-Greedy-policy, 采样
                 action = self.policy(state)
                 next_state, reward, done, info = self.env.step(action)
                 total_reward += reward
-                # epsilon-greedy-policy, 更新
+                # epsilon-Greedy-policy, 更新
                 next_action = self.policy(next_state)
                 delta = reward + self.gamma * self.Q[next_state][next_action] - self.Q[state][action]
                 # print(delta)

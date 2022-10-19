@@ -42,11 +42,11 @@ class Q_lambda():
             state = self.env.reset()
             E = defaultdict(lambda : np.zeros(self.nS))
             while True:
-                # epsilon-greedy-policy, 采样
+                # epsilon-Greedy-policy, 采样
                 action = self.policy(state)
                 next_state, reward, done, info = self.env.step(action)
                 total_reward += reward
-                # greedy-policy, 更新
+                # Greedy-policy, 更新
                 next_action = np.argmax(self.Q[next_state])
                 delta = reward + self.gamma * self.Q[next_state][next_action] - self.Q[state][action]
                 # print(delta)

@@ -84,7 +84,7 @@ class PolicyGradient:
         """
         choose action with probabilities.
         :param s: state
-        :param greedy: choose action greedy or not
+        :param greedy: choose action Greedy or not
         :return: act
         """
         _logits = self.model(np.array([s], np.float32))

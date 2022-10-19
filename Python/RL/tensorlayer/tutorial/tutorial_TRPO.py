@@ -66,8 +66,8 @@ VF_LR = 1e-3  # Learning rate for value function optimizer
 TRAIN_VF_ITERS = 100  # Number of gradient descent steps to take on value function per epoch
 DAMPING_COEFF = 0.1  # Artifact for numerical stability
 CG_ITERS = 10  # Number of iterations of conjugate gradient to perform
-BACKTRACK_ITERS = 10  # Maximum number of steps allowed in the backtracking line search
-BACKTRACK_COEFF = 0.8  # How far back to step during backtracking line search
+BACKTRACK_ITERS = 10  # Maximum number of steps allowed in the Backtracking line search
+BACKTRACK_COEFF = 0.8  # How far back to step during Backtracking line search
 LAM = 0.97  # lambda for GAE-lambda
 SAVE_FREQ = 10  # How often (in terms of gap between epochs) to save the current policy and value function
 EPS = 1e-8  # epsilon
@@ -214,7 +214,7 @@ class TRPO:
         """
         get action
         :param state: state input
-        :param greedy: get action greedy or not
+        :param greedy: get action Greedy or not
         :return: pi, v, logp_pi, mean, log_std
         """
         state = np.array([state], np.float32)
@@ -408,7 +408,7 @@ class TRPO:
             loss = self.pi_loss(states, actions, adv, logp_old_ph)
             return [d_kl, loss]
 
-        # trpo with backtracking line search, hard kl
+        # trpo with Backtracking line search, hard kl
         for j in range(BACKTRACK_ITERS):
             kl, pi_l_new = set_and_eval(step=BACKTRACK_COEFF**j)
             if kl <= DELTA and pi_l_new <= pi_l_old:

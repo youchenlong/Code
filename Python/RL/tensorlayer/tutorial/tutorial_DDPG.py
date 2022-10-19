@@ -152,7 +152,7 @@ class DDPG(object):
         """
         Choose action
         :param s: state
-        :param greedy: get action greedy or not
+        :param greedy: get action Greedy or not
         :return: act
         """
         a = self.actor(np.array([s], dtype=np.float32))[0]

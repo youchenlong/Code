@@ -189,7 +189,7 @@ class PPO(object):
         """
         Choose action
         :param state: state
-        :param greedy: choose action greedy or not
+        :param greedy: choose action Greedy or not
         :return: clipped action
         """
         state = state[np.newaxis, :].astype(np.float32)

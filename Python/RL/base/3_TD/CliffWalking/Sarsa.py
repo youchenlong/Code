@@ -41,11 +41,11 @@ class Sarsa():
             total_reward = 0
             state = self.env.reset()
             while True:
-                # epsilon-greedy-policy, 采样
+                # epsilon-Greedy-policy, 采样
                 action = self.policy(state)
                 next_state, reward, done, info = self.env.step(action)
                 total_reward += reward
-                # epsilon-greedy-policy, 更新
+                # epsilon-Greedy-policy, 更新
                 next_action = self.policy(next_state)
                 self.Q[state][action] += self.alpha * (reward + self.gamma * self.Q[next_state][next_action] - self.Q[state][action])
                 if done:

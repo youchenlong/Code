@@ -56,7 +56,7 @@ e_rewards = train(env, e_greedy_agent, steps)
 UCB_rewards = train(env, UCB_agent, steps)
 
 fig, ax = plt.subplots()
-ax.plot(e_rewards, color='green', label='e-greedy')
+ax.plot(e_rewards, color='green', label='e-Greedy')
 ax.plot(UCB_rewards, color='blue', label='UCB')
 plt.legend()
 # plt.savefig('exploration.png')

@@ -23,11 +23,11 @@ dqn = DQN(net_list,
           double_q=False,
           dueling=False,
           prioritized_replay=True, prioritized_alpha=0.2, prioritized_beta0=0.5)
-dqn.learn(env, mode='train', render=False,
-          train_episodes=1000,
-          max_steps=200,
-          learning_starts=100,
-          plot_func=plot)
+# dqn.learn(env, mode='train', render=False,
+#           train_episodes=1000,
+#           max_steps=200,
+#           learning_starts=100,
+#           plot_func=plot)
 dqn.learn(env, mode='test', render=True,
           test_episodes=10,
           max_steps=200)

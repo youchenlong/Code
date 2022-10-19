@@ -59,7 +59,7 @@ if env_id != 'PongNoFrameskip-v4':
     qnet_type = 'MLP'
     number_timesteps = 1000  # total number of time steps to train on
     explore_timesteps = 100
-    # epsilon-greedy schedule, final exploit prob is 0.99
+    # epsilon-Greedy schedule, final exploit prob is 0.99
     epsilon = lambda i_iter: 1 - 0.99 * min(1, i_iter / explore_timesteps)
     lr = 5e-3  # learning rate
     buffer_size = 1000  # replay buffer size
@@ -71,7 +71,7 @@ else:
     qnet_type = 'CNN'
     number_timesteps = int(1e6)  # total number of time steps to train on
     explore_timesteps = 1e5
-    # epsilon-greedy schedule, final exploit prob is 0.99
+    # epsilon-Greedy schedule, final exploit prob is 0.99
     epsilon = lambda i_iter: 1 - 0.99 * min(1, i_iter / explore_timesteps)
     lr = 1e-4  # learning rate
     buffer_size = 10000  # replay buffer size

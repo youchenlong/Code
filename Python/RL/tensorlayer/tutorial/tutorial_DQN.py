@@ -122,7 +122,7 @@ if __name__ == '__main__':
                 Q1 = qnetwork(np.asarray([to_one_hot(s1, 16)], dtype=np.float32)).numpy()
 
                 ## Obtain maxQ' and set our target value for chosen action.
-                maxQ1 = np.max(Q1)  # in Q-Learning, policy is greedy, so we use "max" to select the next action.
+                maxQ1 = np.max(Q1)  # in Q-Learning, policy is Greedy, so we use "max" to select the next action.
                 targetQ = allQ
                 targetQ[0, a[0]] = r + lambd * maxQ1
                 ## Train network using target and predicted Q values
@@ -168,7 +168,7 @@ if __name__ == '__main__':
             for j in range(99):  # step index, maximum step is 99
                 ## Choose an action by greedily (with e chance of random action) from the Q-network
                 allQ = qnetwork(np.asarray([to_one_hot(s, 16)], dtype=np.float32)).numpy()
-                a = np.argmax(allQ, 1)  # no epsilon, only greedy for testing
+                a = np.argmax(allQ, 1)  # no epsilon, only Greedy for testing
 
                 ## Get new state and reward from environment
                 s1, r, d, _ = env.step(a[0])
