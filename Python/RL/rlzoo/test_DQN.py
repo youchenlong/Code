@@ -9,7 +9,7 @@ env_id = 'CartPole-v1'
 env = gym.make(env_id)
 obs_space = env.observation_space
 act_space = env.action_space
-seed = 0
+seed = 123456
 set_seed(seed, env)
 
 name = 'DQN'
@@ -22,15 +22,15 @@ dqn = DQN(net_list,
           buffer_size=1000,
           double_q=False,
           dueling=False,
-          prioritized_replay=True, prioritized_alpha=0.2, prioritized_beta0=0.5)
-# dqn.learn(env, mode='train', render=False,
-#           train_episodes=1000,
-#           max_steps=200,
-#           learning_starts=100,
-#           plot_func=plot)
-dqn.learn(env, mode='test', render=True,
-          test_episodes=10,
-          max_steps=200)
+          prioritized_replay=False, prioritized_alpha=0.2, prioritized_beta0=0.5)
+dqn.learn(env, mode='train', render=False,
+          train_episodes=1000,
+          max_steps=200,
+          learning_starts=100,
+          plot_func=plot)
+# dqn.learn(env, mode='test', render=True,
+#           test_episodes=10,
+#           max_steps=200)
 
 
 

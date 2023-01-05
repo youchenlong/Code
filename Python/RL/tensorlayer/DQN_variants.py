@@ -54,7 +54,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--train', dest='train', action='store_true')
 parser.add_argument('--test', dest='test', action='store_true')
 parser.add_argument('--save_path', default=None, help='folder to save')
-parser.add_argument('--seed', help='random seed', type=int, default=0)
+parser.add_argument('--seed', help='random seed', type=int, default=123456)
 parser.add_argument('--env_id', default='CartPole-v1', help='OpenGYM environment')
 parser.add_argument('--noisy_scale', type=float, default=1e-2)
 parser.add_argument('--disable_double', action='store_true')
@@ -81,8 +81,10 @@ time.sleep(5)
 # ####################  hyper parameters  ####################
 if env_id != 'PongNoFrameskip-v4':
     qnet_type = 'MLP'
-    number_timesteps = 1000  # total number of time steps to train on
-    explore_timesteps = 100
+    number_timesteps = 2000  # total number of time steps to train on
+    max_steps=200
+    explore_timesteps = 200
+    train_freq = 4
     # epsilon-Greedy schedule, final exploit prob is 0.99
     epsilon = lambda i_iter: 1 - 0.99 * min(1, i_iter / explore_timesteps)
     lr = 5e-3  # learning rate
@@ -95,6 +97,7 @@ else:
     qnet_type = 'CNN'
     number_timesteps = int(1e6)  # total number of time steps to train on
     explore_timesteps = 1e5
+    train_freq = 10
     # epsilon-Greedy schedule, final exploit prob is 0.99
     epsilon = lambda i_iter: 1 - 0.99 * min(1, i_iter / explore_timesteps)
     lr = 1e-4  # learning rate
@@ -377,7 +380,8 @@ if __name__ == '__main__':
         for i in range(1, number_timesteps + 1):
             o = env.reset()
             episode_reward = 0
-            while True:
+            # while True:
+            for step in range(1, max_steps + 1):
                 a = dqn.get_action(o)
 
                 # execute action and feed to replay buffer
@@ -386,7 +390,7 @@ if __name__ == '__main__':
                 buffer.add(o, a, r, o_, done)
                 episode_reward += r
 
-                if i >= warm_start:
+                if i >= warm_start and i % train_freq == 0:
                     transitions = buffer.sample(batch_size)
                     dqn.train(*transitions)
 

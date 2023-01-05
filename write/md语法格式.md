@@ -37,7 +37,7 @@ int main(){
 
 $\alpha$ $\beta$ $\gamma$ $\mu$ $\sigma$ $\delta$ $\epsilon$ $\eta$ $\theta$ $\zeta$ $\lambda$ $\tau$ $\phi$ $\rho$ $\omega$ 
 
-$\Delta$ $\Omega$ $\Theta$
+$\nabla$ $\Delta$ $\Omega$ $\Theta$
 
 ### 2.上标下标
 
@@ -55,6 +55,10 @@ $x+y$
 
 $x-y$
 
+$x \pm y$
+
+$x \mp y$
+
 $x \times y$
 
 $x \cdot y$
@@ -70,6 +74,10 @@ $a^{x}$
 $\log_{a}(x)$
 
 $\sqrt[n]{x}$
+
+$\lfloor n/2 \rfloor$
+
+$\lceil n/2 \rceil$
 
 $\nabla$
 
@@ -189,5 +197,19 @@ min & \ f(x) \\
 s.t. 
 & \ g_i(x) \le 0, i \in I \\
 & \ h_i(x)=0, i \in E \\
+\end{align*}
+$$
+
+### 10.多行公式
+
+$$
+\begin{align*}
+f(x)=\left\{
+\begin{align*}
+& x+1 \\
+& x^2 \\
+& x-1
+\end{align*}
+\right.
 \end{align*}
 $$
