@@ -1,40 +1,31 @@
 import tensorflow as tf
-import numpy as np
-from sklearn.model_selection import train_test_split
 
 tf.random.set_seed(2)
 
-def load_data():
-    np.random.seed(2)
-    n = 1000
-    X_data = np.linspace(0, 100, n).reshape(n, 1)
-    y_data = 2*X_data+3+np.random.normal(size=X_data.size).reshape(n, 1)
-    X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.2)
-    return tf.cast(X_train, tf.float32), \
-           tf.cast(X_test, tf.float32), \
-           tf.cast(y_train, tf.float32), \
-           tf.cast(y_test, tf.float32)
+def get_data():
+    (x_train, y_train), (x_test, y_test) = tf.keras.datasets.fashion_mnist.load_data()
+    x_train = x_train.reshape(60000, 784).astype("float32") / 255
+    x_test = x_test.reshape(10000, 784).astype("float32") / 255
+    y_train = y_train.astype("int32")
+    y_test = y_test.astype("int32")
+    return (x_train, y_train), (x_test, y_test)
 
-class LinearRegression(tf.keras.Model):
-    def __init__(self):
-        super(LinearRegression, self).__init__()
-        self.dense = tf.keras.layers.Dense(1)
-    def call(self, input):
-        output = self.dense(input)
-        return output
+def get_model():
+    model = tf.keras.models.Sequential([
+        tf.keras.layers.Dense(units=10, activation="softmax")
+    ])
+    return model
 
-X_train, X_test, y_train, y_test = load_data()
-model = LinearRegression()
-optimizer = tf.keras.optimizers.Adam(learning_rate=0.01)
-logdir = r'C:\Users\Lenovo\Desktop\Code\Python\ML\tensorflow_exercise\LinearRegression\logs'
-writer = tf.summary.create_file_writer(logdir=logdir)
-for step in range(1000):
-    with tf.GradientTape() as tape:
-        y_pred = model(X_train)
-        loss = tf.reduce_mean(tf.square(y_pred-y_train))
-        print('step: {}, loss: {}'.format(step, loss))
-        with writer.as_default():
-            tf.summary.scalar('loss', loss, step=step)
-            writer.flush()
-    grads = tape.gradient(loss, model.variables)
-    optimizer.apply_gradients(zip(grads, model.variables))
+(x_train, y_train), (x_test, y_test) = get_data()
+model = get_model()
+
+lr, epochs, batch_size = 0.1, 10, 256
+model.compile(optimizer="adam", loss="SparseCategoricalCrossentropy", metrics=["accuracy"])
+# model.load_weights("./models/LR")
+
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir="logs")
+model.fit(x_train, y_train, validation_split=0.2, epochs=epochs, batch_size=batch_size, callbacks=[tensorboard_callback])
+
+model.evaluate(x_test, y_test, batch_size=batch_size)
+
+model.save_weights("./models/LR")
