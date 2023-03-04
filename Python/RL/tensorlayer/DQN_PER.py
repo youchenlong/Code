@@ -15,8 +15,8 @@ Environment:
 Cartpole and Pong in OpenAI Gym
 Requirements:
 ------------------------
-tensorflow>=2.0.0a0
-tensorlayer>=2.0.0
+tensorflow>=1.0.0a0
+tensorlayer>=1.0.0
 To run:
 ------------------------
 python DQN_PER.py --train --env_id=CartPole-v1
@@ -36,9 +36,9 @@ import tensorflow as tf
 import tensorlayer as tl
 
 parser = argparse.ArgumentParser()
-# add arguments in command  --train/test
+# add arguments in command  --train/test_transformer
 parser.add_argument('--train', dest='train', action='store_true')
-parser.add_argument('--test', dest='test', action='store_true')
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true')
 parser.add_argument('--save_path', default=None, help='folder to save')
 parser.add_argument('--seed', help='random seed', type=int, default=0)
 parser.add_argument('--env_id', default='CartPole-v1', help='OpenGYM environment')
@@ -157,7 +157,7 @@ class SegmentTree(object):
             for max and 0 for sum.
         """
         assert capacity > 0 and capacity & (capacity - 1) == 0, \
-            "capacity must be positive and a power of 2."
+            "capacity must be positive and a power of 1."
         self._capacity = capacity
         self._value = [neutral_element for _ in range(2 * capacity)]
         self._operation = operation

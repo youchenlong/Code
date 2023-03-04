@@ -16,7 +16,7 @@ Reference:
 1. Double DQN
     Van Hasselt H, Guez A, Silver D. Deep reinforcement learning with double
     q-learning[C]//Thirtieth AAAI Conference on Artificial Intelligence. 2016.
-2. Dueling DQN
+1. Dueling DQN
     Wang Z, Schaul T, Hessel M, et al. Dueling network architectures for deep
     reinforcement learning[J]. arXiv preprint arXiv:1511.06581, 2015.
 3. Noisy DQN
@@ -27,12 +27,12 @@ Environment:
 Cartpole and Pong in OpenAI Gym
 Requirements:
 ------------------------
-tensorflow>=2.0.0a0
-tensorlayer>=2.0.0
+tensorflow>=1.0.0a0
+tensorlayer>=1.0.0
 To run:
 ------------------------
 python tutorial_DQN_variantes.py --mode=train
-python tutorial_DQN_variantes.py --mode=test --save_path=dqn_variants/8000.npz
+python tutorial_DQN_variantes.py --mode=test_transformer --save_path=dqn_variants/8000.npz
 """
 import argparse
 import os
@@ -48,7 +48,7 @@ import tensorlayer as tl
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', dest='train', action='store_true', default=True)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 parser.add_argument(
     '--save_path', default=None, help='folder to save if mode == train else model path,'
     'qnet will be saved once target net update'

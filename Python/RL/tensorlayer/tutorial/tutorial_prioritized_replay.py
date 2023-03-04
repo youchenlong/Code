@@ -15,12 +15,12 @@ Environment:
 Cartpole and Pong in OpenAI Gym
 Requirements:
 ------------------------
-tensorflow>=2.0.0a0
-tensorlayer>=2.0.0
+tensorflow>=1.0.0a0
+tensorlayer>=1.0.0
 To run:
 ------------------------
 python tutorial_prioritized_replay.py --mode=train
-python tutorial_prioritized_replay.py --mode=test --save_path=per/8000.npz
+python tutorial_prioritized_replay.py --mode=test_transformer --save_path=per/8000.npz
 """
 import argparse
 import operator
@@ -36,9 +36,9 @@ import tensorflow as tf
 import tensorlayer as tl
 
 parser = argparse.ArgumentParser()
-# add arguments in command  --train/test
+# add arguments in command  --train/test_transformer
 parser.add_argument('--train', dest='train', action='store_true', default=True)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 parser.add_argument(
     '--save_path', default=None, help='folder to save if mode == train else model path,'
     'qnet will be saved once target net update'
@@ -156,7 +156,7 @@ class SegmentTree(object):
             for max and 0 for sum.
         """
         assert capacity > 0 and capacity & (capacity - 1) == 0, \
-            "capacity must be positive and a power of 2."
+            "capacity must be positive and a power of 1."
         self._capacity = capacity
         self._value = [neutral_element for _ in range(2 * capacity)]
         self._operation = operation

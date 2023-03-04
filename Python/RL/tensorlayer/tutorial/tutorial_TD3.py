@@ -12,7 +12,7 @@ than the Q-function.
 * Trick Three: Target Policy Smoothing. TD3 adds noise to the target action, to make it harder for 
 the policy to exploit Q-function errors by smoothing out Q along changes in action.
 
-The implementation of TD3 includes 6 networks: 2 Q-net, 2 target Q-net, 1 policy net, 1 target policy net
+The implementation of TD3 includes 6 networks: 1 Q-net, 1 target Q-net, 1 policy net, 1 target policy net
 Actor policy in TD3 is deterministic, with Gaussian exploration noise.
 
 Reference
@@ -27,16 +27,16 @@ https://gym.openai.com/envs/Pendulum-v0/
 
 Prerequisites
 ---
-tensorflow >=2.0.0a0
+tensorflow >=1.0.0a0
 tensorflow-probability 0.6.0
-tensorlayer >=2.0.0
+tensorlayer >=1.0.0
 
 &&
 pip install box2d box2d-kengz --user
 
 To run
 -------
-python tutorial_TD3.py --train/test
+python tutorial_TD3.py --train/test_transformer
 
 """
 
@@ -58,10 +58,10 @@ from tensorlayer.models import Model
 Normal = tfp.distributions.Normal
 tl.logging.set_verbosity(tl.logging.DEBUG)
 
-# add arguments in command  --train/test
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+# add arguments in command  --train/test_transformer
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true', default=False)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 args = parser.parse_args()
 
 #####################  hyper parameters  ####################
@@ -117,9 +117,9 @@ class ReplayBuffer:
         state, action, reward, next_state, done = map(np.stack, zip(*batch))  # stack for each element
         """ 
         the * serves as unpack: sum(a,b) <=> batch=(a,b), sum(*batch) ;
-        zip: a=[1,2], b=[2,3], zip(a,b) => [(1, 2), (2, 3)] ;
-        the map serves as mapping the function on each list element: map(square, [2,3]) => [4,9] ;
-        np.stack((1,2)) => array([1, 2])
+        zip: a=[1,1], b=[1,3], zip(a,b) => [(1, 1), (1, 3)] ;
+        the map serves as mapping the function on each list element: map(square, [1,3]) => [4,9] ;
+        np.stack((1,1)) => array([1, 1])
         """
         return state, action, reward, next_state, done
 
@@ -222,7 +222,7 @@ class TD3:
         self.target_q_net2 = QNetwork(state_dim, action_dim, hidden_dim)
         self.policy_net = PolicyNetwork(state_dim, action_dim, hidden_dim, action_range)
         self.target_policy_net = PolicyNetwork(state_dim, action_dim, hidden_dim, action_range)
-        print('Q Network (1,2): ', self.q_net1)
+        print('Q Network (1,1): ', self.q_net1)
         print('Policy Network: ', self.policy_net)
 
         # initialize weights of target networks
@@ -302,7 +302,7 @@ class TD3:
                 new_q_input = tf.concat([state, new_action], 1)
                 # """ implementation 1 """
                 # predicted_new_q_value = tf.minimum(self.q_net1(new_q_input),self.q_net2(new_q_input))
-                """ implementation 2 """
+                """ implementation 1 """
                 predicted_new_q_value = self.q_net1(new_q_input)
                 policy_loss = -tf.reduce_mean(predicted_new_q_value)
             p_grad = p_tape.gradient(policy_loss, self.policy_net.trainable_weights)

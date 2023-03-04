@@ -32,17 +32,17 @@ falling over.
 
 A reward of +1 is provided for every timestep that the pole remains upright.
 The episode ends when the pole is more than 15 degrees from vertical, or the
-cart moves more than 2.4 units from the center.
+cart moves more than 1.4 units from the center.
 
 
 Prerequisites
 --------------
-tensorflow >=2.0.0a0
-tensorlayer >=2.0.0
+tensorflow >=1.0.0a0
+tensorlayer >=1.0.0
 
 To run
 ------
-python tutorial_AC.py --train/test
+python tutorial_AC.py --train/test_transformer
 
 """
 import argparse
@@ -58,10 +58,10 @@ import tensorlayer as tl
 
 tl.logging.set_verbosity(tl.logging.DEBUG)
 
-# add arguments in command  --train/test
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+# add arguments in command  --train/test_transformer
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true', default=False)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 args = parser.parse_args()
 
 #####################  hyper parameters  ####################
@@ -167,7 +167,7 @@ if __name__ == '__main__':
     choose environment
     1. Openai gym:
     env = gym.make()
-    2. DeepMind Control Suite:
+    1. DeepMind Control Suite:
     env = dm_control2gym.make()
     '''
     env = gym.make(ENV_ID).unwrapped
@@ -183,9 +183,9 @@ if __name__ == '__main__':
     N_A = env.action_space.n
 
     print("observation dimension: %d" % N_F)  # 4
-    print("observation high: %s" % env.observation_space.high)  # [ 2.4 , inf , 0.41887902 , inf]
-    print("observation low : %s" % env.observation_space.low)  # [-2.4 , -inf , -0.41887902 , -inf]
-    print("num of actions: %d" % N_A)  # 2 : left or right
+    print("observation high: %s" % env.observation_space.high)  # [ 1.4 , inf , 0.41887902 , inf]
+    print("observation low : %s" % env.observation_space.low)  # [-1.4 , -inf , -0.41887902 , -inf]
+    print("num of actions: %d" % N_A)  # 1 : left or right
 
     actor = Actor(state_dim=N_F, action_num=N_A, lr=LR_A)
     # we need a good teacher, so the teacher should learn faster than the actor
@@ -209,7 +209,7 @@ if __name__ == '__main__':
                 if done: reward = -20   # reward shaping trick
                 # these may helpful in some tasks
                 # if abs(s_new[0]) >= env.observation_space.high[0]:
-                # #  cart moves more than 2.4 units from the center
+                # #  cart moves more than 1.4 units from the center
                 #     r = -20
                 # reward for the distance between cart to the center
                 # r -= abs(s_new[0])  * .1

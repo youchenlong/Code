@@ -17,9 +17,9 @@ Openai Gym CartPole-v0, discrete action space
 
 Prerequisites
 --------------
-tensorflow >=2.0.0a0
+tensorflow >=1.0.0a0
 tensorflow-probability 0.6.0
-tensorlayer >=2.0.0
+tensorlayer >=1.0.0
 
 To run
 ------
@@ -37,9 +37,9 @@ import tensorflow as tf
 
 import tensorlayer as tl
 
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true')
-parser.add_argument('--test', dest='test', action='store_true')
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true')
 parser.add_argument('--save_path', default=None, help='folder to save')
 parser.add_argument('--seed', help='random seed', type=int, default=0)
 parser.add_argument('--env_id', default='CartPole-v1', help='OpenGYM environment')
@@ -178,7 +178,7 @@ if __name__ == '__main__':
         plt.savefig(os.path.join('image', '_'.join([alg_name, env_id])))
 
     if args.test:
-        # test
+        # test_transformer
         agent.load()
         for episode in range(TEST_EPISODES):
             state = env.reset()

@@ -29,5 +29,5 @@ axes[2,0].boxplot(x)
 x = np.array([1,2,3,4,5,6])
 axes[2,1].scatter(x, x)
 # 保存图片
-# plt.savefig('test.png')
+# plt.savefig('test_transformer.png')
 plt.show()

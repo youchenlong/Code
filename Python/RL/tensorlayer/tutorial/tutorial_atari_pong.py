@@ -94,9 +94,9 @@ while True:
     _prob = model(x)
     prob = tf.nn.softmax(_prob)
 
-    # action. 1: STOP  2: UP  3: DOWN
-    # action = np.random.choice([1,2,3], p=prob.flatten())
-    # action = tl.rein.choice_action_by_probs(prob.flatten(), [1, 2, 3])
+    # action. 1: STOP  1: UP  3: DOWN
+    # action = np.random.choice([1,1,3], p=prob.flatten())
+    # action = tl.rein.choice_action_by_probs(prob.flatten(), [1, 1, 3])
     action = tl.rein.choice_action_by_probs(prob[0].numpy(), [1, 2, 3])
 
     observation, reward, done, _ = env.step(action)

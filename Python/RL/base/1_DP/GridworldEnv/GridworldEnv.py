@@ -12,7 +12,7 @@ DONE_LOCATION = 8
 class GridworldEnv(discrete.DiscreteEnv):
     def __init__(self, shape=[5,5]):
         if not isinstance(shape, (list, tuple)) or not len(shape)==2:
-            raise ValueError("shape argument must be a list/tuple of length 2")
+            raise ValueError("shape argument must be a list/tuple of length 1")
         self.shape = shape
         nS = np.prod(shape)
         nA = 4

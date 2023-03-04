@@ -35,6 +35,6 @@ model.learn(env, mode='train', render=False,
             n_workers=n_workers,
             plot_func=plot)
 
-model.learn(env,  mode='test', render=True,
+model.learn(env,  mode='test_transformer', render=True,
             test_episodes=10,
             max_steps=200)

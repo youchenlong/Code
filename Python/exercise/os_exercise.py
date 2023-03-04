@@ -7,7 +7,7 @@ os.name
 # 当前路径
 dir = os.getcwd()
 # 拼接路径
-# new_dir = os.path.join(dir, 'test')
+# new_dir = os.path.join(dir, 'test_transformer')
 # new_dir2 = os.path.join(dir, 'test1', 'test2')
 # 列出目录
 # os.listdir(dir)
@@ -24,17 +24,17 @@ dir = os.getcwd()
 # 是否是目录
 # os.path.isdir(new_dir)
 # 是否是文件
-# os.path.isfile(os.path.join(new_dir, 'test.txt'))
+# os.path.isfile(os.path.join(new_dir, 'test_transformer.txt'))
 # 文件名或目录名
-# os.path.basename(os.path.join(new_dir, 'test.txt'))
+# os.path.basename(os.path.join(new_dir, 'test_transformer.txt'))
 # 父目录
-# os.path.dirname(os.path.join(new_dir, 'test.txt'))
+# os.path.dirname(os.path.join(new_dir, 'test_transformer.txt'))
 # 绝对路径
-# os.path.abspath(os.path.join(new_dir, 'test.txt'))
+# os.path.abspath(os.path.join(new_dir, 'test_transformer.txt'))
 
 # &&串行
 # &并行
-# os.system('ls && cd test && ls')
-# os.system('ls & cd test && ls')
-# os.system('ls && cd test & ls')
+# os.system('ls && cd test_transformer && ls')
+# os.system('ls & cd test_transformer && ls')
+# os.system('ls && cd test_transformer & ls')
 # os.system('python test_MLP.py')

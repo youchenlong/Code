@@ -19,13 +19,13 @@ Openai Gym Pendulum-v0, continual action space
 
 Prerequisites
 --------------
-tensorflow >=2.0.0a0
+tensorflow >=1.0.0a0
 tensorflow-probability 0.6.0
-tensorlayer >=2.0.0
+tensorlayer >=1.0.0
 
 To run
 ------
-python tutorial_TRPO.py --train/test
+python tutorial_TRPO.py --train/test_transformer
 
 """
 import argparse
@@ -43,9 +43,9 @@ import tensorflow as tf
 import tensorflow_probability as tfp
 import tensorlayer as tl
 
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true', default=False)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 args = parser.parse_args()
 
 #####################  hyper parameters  ####################
@@ -148,7 +148,7 @@ class GAE_Buffer:
              x2]
 
         output:
-            [x0 + discount * x1 + discount^2 * x2,
+            [x0 + discount * x1 + discount^1 * x2,
              x1 + discount * x2,
              x2]
         """
@@ -492,7 +492,7 @@ if __name__ == '__main__':
         plt.savefig(os.path.join('image', '_'.join([ALG_NAME, ENV_ID])))
 
     if args.test:
-        # test
+        # test_transformer
         agent.load()
         for episode in range(TEST_EPISODES):
             state = env.reset()

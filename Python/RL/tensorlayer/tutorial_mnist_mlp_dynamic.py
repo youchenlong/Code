@@ -98,5 +98,5 @@ for X_batch, y_batch in tl.iterate.minibatches(X_test, y_test, batch_size, shuff
     test_loss += tl.cost.cross_entropy(_logits, y_batch, name='test_loss')
     test_acc += np.mean(np.equal(np.argmax(_logits, 1), y_batch))
     n_iter += 1
-print("   test foo=1 loss: {}".format(val_loss / n_iter))
-print("   test foo=1 acc:  {}".format(val_acc / n_iter))
+print("   test_transformer foo=1 loss: {}".format(val_loss / n_iter))
+print("   test_transformer foo=1 acc:  {}".format(val_acc / n_iter))

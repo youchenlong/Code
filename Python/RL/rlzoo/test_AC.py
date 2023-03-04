@@ -26,6 +26,6 @@ model.learn(env, mode='train', render=False,
             train_episodes=300,
             max_steps=200,
             save_interval=100)
-model.learn(env, mode='test', render=True,
+model.learn(env, mode='test_transformer', render=True,
             test_episodes=10,
             max_steps=200)

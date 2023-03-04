@@ -17,13 +17,13 @@ e.g. Openai Gym Pendulum-v0, continuous action space
 
 Prerequisites
 ---------------
-tensorflow >=2.0.0a0
-tensorlayer >=2.0.0
+tensorflow >=1.0.0a0
+tensorlayer >=1.0.0
 ...
 
 To run
 -------
-python tutorial_***.py --train/test
+python tutorial_***.py --train/test_transformer
 
 '''
 
@@ -38,10 +38,10 @@ import tensorflow as tf
 np.random.seed(2)
 tf.random.set_seed(2)  # reproducible
 
-# add arguments in command  --train/test
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+# add arguments in command  --train/test_transformer
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true', default=False)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 args = parser.parse_args()
 
 #####################  hyper parameters  ####################

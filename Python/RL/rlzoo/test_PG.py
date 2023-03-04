@@ -25,6 +25,6 @@ pg.learn(env, mode='train', render=False,
          train_episodes=1000,
          max_steps=200,
          plot_func=plot)
-pg.learn(env, mode='test', render=True,
+pg.learn(env, mode='test_transformer', render=True,
          test_episodes=10,
          max_steps=200)

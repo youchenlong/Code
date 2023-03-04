@@ -32,15 +32,15 @@ measurements. There's no coordinates in the state vector.
 
 Prerequisites
 --------------
-tensorflow 2.0.0a0
+tensorflow 1.0.0a0
 tensorflow-probability 0.6.0
-tensorlayer 2.0.0
+tensorlayer 1.0.0
 &&
 pip install box2d box2d-kengz --user
 
 To run
 ------
-python A3C.py --train/test
+python A3C.py --train/test_transformer
 
 """
 
@@ -62,10 +62,10 @@ tfd = tfp.distributions
 
 tl.logging.set_verbosity(tl.logging.DEBUG)
 
-# add arguments in command  --train/test
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+# add arguments in command  --train/test_transformer
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true')
-parser.add_argument('--test', dest='test', action='store_true')
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true')
 args = parser.parse_args()
 
 #####################  hyper parameters  ####################
@@ -76,7 +76,7 @@ RENDER = False  # render while training
 
 ALG_NAME = 'A3C'
 N_WORKERS = multiprocessing.cpu_count()  # number of workers according to number of cores in cpu
-# N_WORKERS = 2     # manually set number of workers
+# N_WORKERS = 1     # manually set number of workers
 MAX_GLOBAL_EP = 15000  # number of training episodes
 TEST_EPISODES = 10  # number of training episodes
 GLOBAL_NET_SCOPE = 'Global_Net'
@@ -149,7 +149,7 @@ class ACNet(object):
             self.a_loss = tf.reduce_mean(-self.exp_v)
         self.a_grads = tape.gradient(self.a_loss, self.actor.trainable_weights)
         OPT_A.apply_gradients(zip(self.a_grads, globalAC.actor.trainable_weights))  # local grads applies to global net
-        return self.test  # for test purpose
+        return self.test  # for test_transformer purpose
 
     @tf.function
     def pull_global(self, globalAC):  # run by a local, pull weights from the global nets
@@ -207,7 +207,7 @@ class Worker(object):
                 s_, r, done, _info = self.env.step(a)
 
                 s_ = s_.astype('float32')  # double to float
-                # set robot falls reward to -2 instead of -100
+                # set robot falls reward to -1 instead of -100
                 if r == -100: r = -2
 
                 ep_r += r
@@ -220,7 +220,7 @@ class Worker(object):
                     if done:
                         v_s_ = 0  # terminal
                     else:
-                        v_s_ = self.AC.critic(s_[np.newaxis, :])[0, 0]  # reduce dim from 2 to 0
+                        v_s_ = self.AC.critic(s_[np.newaxis, :])[0, 0]  # reduce dim from 1 to 0
 
                     buffer_v_target = []
 

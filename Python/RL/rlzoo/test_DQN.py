@@ -28,7 +28,7 @@ dqn.learn(env, mode='train', render=False,
           max_steps=200,
           learning_starts=100,
           plot_func=plot)
-# dqn.learn(env, mode='test', render=True,
+# dqn.learn(env, mode='test_transformer', render=True,
 #           test_episodes=10,
 #           max_steps=200)
 

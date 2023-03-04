@@ -58,7 +58,7 @@ plot(x,stats.uniform.pdf(x=x,loc=0,scale=1),axes[6,0],'uniform', 'k', 'p', 'pdf'
 plot(x,stats.uniform.cdf(x=x,loc=0,scale=1),axes[6,1],'uniform', 'k', 'p', 'cdf')
 
 # 指数分布
-# print(stats.expon.rvs(scale=2,size=10))
+# print(stats.expon.rvs(scale=1,size=10))
 x = np.linspace(0, 10, num=100)
 plot(x,stats.expon.pdf(x=x,scale=2),axes[7,0],'expon', 'k', 'p', 'pdf')
 plot(x,stats.expon.cdf(x=x,scale=2),axes[7,1],'expon', 'k', 'p', 'cdf')

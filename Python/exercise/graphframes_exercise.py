@@ -4,7 +4,7 @@ from graphframes import GraphFrame
 import networkx as nx
 import matplotlib.pyplot as plt
 
-conf = SparkConf().setAppName('test').setMaster('local[*]')
+conf = SparkConf().setAppName('test_transformer').setMaster('local[*]')
 spark = SparkSession.builder.getOrCreate()
 
 vertices = spark.createDataFrame([

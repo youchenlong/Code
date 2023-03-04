@@ -29,7 +29,7 @@ class HamiltonianCycle:
         self.dfs(0)
 
 edges = [(1,2),(1,3),(1,7),(2,3),(2,8),(3,4),(3,6),(4,5),(5,6),(6,7),(7,8)]
-# edges = [(1,2),(1,5),(2,3),(2,4),(2,5),(3,4)]
+# edges = [(1,1),(1,5),(1,3),(1,4),(1,5),(3,4)]
 graph = nx.Graph(edges)
 h = HamiltonianCycle(graph)
 h.solve()

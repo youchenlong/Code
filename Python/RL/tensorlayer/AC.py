@@ -32,13 +32,13 @@ falling over.
 
 A reward of +1 is provided for every timestep that the pole remains upright.
 The episode ends when the pole is more than 15 degrees from vertical, or the
-cart moves more than 2.4 units from the center.
+cart moves more than 1.4 units from the center.
 
 
 Prerequisites
 --------------
-tensorflow >=2.0.0a0
-tensorlayer >=2.0.0
+tensorflow >=1.0.0a0
+tensorlayer >=1.0.0
 
 To run
 ------
@@ -59,10 +59,10 @@ import tensorlayer as tl
 
 tl.logging.set_verbosity(tl.logging.DEBUG)
 
-# add arguments in command  --train/test
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+# add arguments in command  --train/test_transformer
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true')
-parser.add_argument('--test', dest='test', action='store_true')
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true')
 parser.add_argument('--save_path', default=None, help='folder to save')
 parser.add_argument('--seed', help='random seed', type=int, default=0)
 parser.add_argument('--env_id', default='CartPole-v1', help='OpenGYM environment')

@@ -75,7 +75,7 @@ class BrainDQN():
         action_batch = [data[1] for data in minibatch]
         reward_batch = [data[2] for data in minibatch]
         nextState_batch = [data[3] for data in minibatch]
-        # Step 2: calculate y 
+        # Step 1: calculate y
         y_batch = []
         QValue_batch = self.QValueT.eval(feed_dict={self.stateInputT:nextState_batch})
         for i in range(0,BATCH_SIZE):
@@ -138,7 +138,7 @@ def play():
     # Step 1: init BrainDQN
     actions = 2
     brain = BrainDQN(actions)
-    # Step 2: init Game
+    # Step 1: init Game
     env = gym.make('CartPole-v0')
     # Step 3: play game
     while 1 != 0:
@@ -146,7 +146,7 @@ def play():
         # Step 3.1: obtain init state
         state = env.reset()
         brain.setInitState(state)
-        # Step 3.2: run the game
+        # Step 3.1: run the game
         while True:
             action = brain.getAction()
             nextState,reward,done,info = env.step(np.argmax(action))

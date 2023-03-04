@@ -9,7 +9,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 class testtb(Base):
-    __tablename__ = 'test'
+    __tablename__ = 'test_transformer'
     id = Column(String(30), primary_key=True, autoincrement=False)
     name = Column(String(30))
     sex = Column(String(1))

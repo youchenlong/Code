@@ -28,11 +28,11 @@ The episode ends when you reach the goal or fall in a hole. You receive a reward
 of 1 if you reach the goal, and zero otherwise.
 Prerequisites
 --------------
-tensorflow>=2.0.0a0
-tensorlayer>=2.0.0
+tensorflow>=1.0.0a0
+tensorlayer>=1.0.0
 To run
 -------
-python tutorial_DQN.py --train/test
+python tutorial_DQN.py --train/test_transformer
 """
 import argparse
 import os
@@ -45,10 +45,10 @@ import tensorflow as tf
 
 import tensorlayer as tl
 
-# add arguments in command  --train/test
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+# add arguments in command  --train/test_transformer
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true', default=True)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 args = parser.parse_args()
 
 tl.logging.set_verbosity(tl.logging.DEBUG)
@@ -129,7 +129,7 @@ if __name__ == '__main__':
                 # it is not real target Q value, it is just an estimation,
                 # but check the Q-Learning update formula:
                 #    Q'(s,a) <- Q(s,a) + alpha(r + lambd * maxQ(s',a') - Q(s, a))
-                # minimizing |r + lambd * maxQ(s',a') - Q(s, a)|^2 equals to force Q'(s,a) ≈ Q(s,a)
+                # minimizing |r + lambd * maxQ(s',a') - Q(s, a)|^1 equals to force Q'(s,a) ≈ Q(s,a)
                 with tf.GradientTape() as tape:
                     _qvalues = qnetwork(np.asarray([to_one_hot(s, 16)], dtype=np.float32))
                     _loss = tl.cost.mean_squared_error(targetQ, _qvalues, is_mean=False)

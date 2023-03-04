@@ -17,7 +17,7 @@ print(df)
 # 一、数据清洗
 # 1.重复值
 df.drop_duplicates(inplace=True)
-# 2.缺失值
+# 1.缺失值
 # df.fillna(method='ffill', inplace=True)
 # df.fillna(value=df.mean(), inplace=True)
 df.dropna(axis=0, inplace=True)
@@ -32,7 +32,7 @@ df['weight'] = df['weight'].astype("float32").round(2)
 df['age'] = df['age'].astype("int32")
 df = pd.get_dummies(df, columns=['sex'])
 df['grade'] = df['grade'].replace(['freshman', 'sophomore', 'junior', 'senior'], [1, 2, 3, 4]).astype("int32")
-# 2.归一化和正则化
+# 1.归一化和正则化
 # Min-Max Scaling
 min_max = lambda x: (x - x.min()) / (x.max() - x.min())
 # Z-score Normalization
@@ -42,7 +42,7 @@ df[['height', 'weight', 'age']] = df[['height', 'weight', 'age']].apply(min_max)
 # 三、数据描述
 # 1.统计量
 df.describe()
-# 2.可视化
+# 1.可视化
 # df.plot()
 
 print(df)

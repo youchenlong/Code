@@ -14,12 +14,12 @@ Environment:
 Cartpole and Pong in OpenAI Gym
 Requirements:
 ------------------------
-tensorflow>=2.0.0a0
-tensorlayer>=2.0.0
+tensorflow>=1.0.0a0
+tensorlayer>=1.0.0
 To run:
 ------------------------
 python tutorial_C51.py --mode=train
-python tutorial_C51.py --mode=test --save_path=c51/8000.npz
+python tutorial_C51.py --mode=test_transformer --save_path=c51/8000.npz
 """
 import argparse
 import os
@@ -35,7 +35,7 @@ import tensorlayer as tl
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', dest='train', action='store_true', default=True)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 parser.add_argument(
     '--save_path', default=None, help='folder to save if mode == train else model path,'
     'qnet will be saved once target net update'

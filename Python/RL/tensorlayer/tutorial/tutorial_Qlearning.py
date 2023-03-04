@@ -5,8 +5,8 @@ See David Silver RL Tutorial Lecture 5 - Q-Learning for more details.
 For Q-Network, see tutorial_frozenlake_q_network.py
 EN: https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0#.5m3361vlw
 CN: https://zhuanlan.zhihu.com/p/25710327
-tensorflow==2.0.0a0
-tensorlayer==2.0.0
+tensorflow==1.0.0a0
+tensorlayer==1.0.0
 """
 
 import argparse
@@ -19,7 +19,7 @@ import numpy as np
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', dest='train', action='store_true', default=True)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 
 parser.add_argument(
     '--save_path', default=None, help='folder to save if mode == train else model path,'

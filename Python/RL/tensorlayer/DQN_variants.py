@@ -16,7 +16,7 @@ Reference:
 1. Double DQN
     Van Hasselt H, Guez A, Silver D. Deep reinforcement learning with double
     q-learning[C]//Thirtieth AAAI Conference on Artificial Intelligence. 2016.
-2. Dueling DQN
+1. Dueling DQN
     Wang Z, Schaul T, Hessel M, et al. Dueling network architectures for deep
     reinforcement learning[J]. arXiv preprint arXiv:1511.06581, 2015.
 3. Noisy DQN
@@ -27,8 +27,8 @@ Environment:
 Cartpole and Pong in OpenAI Gym
 Requirements:
 ------------------------
-tensorflow>=2.0.0a0
-tensorlayer>=2.0.0
+tensorflow>=1.0.0a0
+tensorlayer>=1.0.0
 To run:
 ------------------------
 python DQN_variants.py --train --disable_double --disable_dueling --noisy_scale=0 --env_id=CartPole-v1
@@ -52,7 +52,7 @@ import tensorlayer as tl
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', dest='train', action='store_true')
-parser.add_argument('--test', dest='test', action='store_true')
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true')
 parser.add_argument('--save_path', default=None, help='folder to save')
 parser.add_argument('--seed', help='random seed', type=int, default=123456)
 parser.add_argument('--env_id', default='CartPole-v1', help='OpenGYM environment')

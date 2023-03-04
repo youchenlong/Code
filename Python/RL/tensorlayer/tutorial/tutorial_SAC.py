@@ -6,7 +6,7 @@ And 'soft' in SAC indicates the trade-off between the entropy and expected retur
 The additional consideration of entropy term helps with more explorative policy.
 And this implementation contains an automatic update for the entropy factor.
 This version of Soft Actor-Critic (SAC) implementation contains 5 networks: 
-2 Q net, 2 target Q net, 1 policy net.
+1 Q net, 1 target Q net, 1 policy net.
 It uses alpha loss.
 Reference
 ---------
@@ -17,14 +17,14 @@ Openai Gym Pendulum-v0, continuous action space
 https://gym.openai.com/envs/Pendulum-v0/
 Prerequisites
 --------------
-tensorflow >=2.0.0a0
+tensorflow >=1.0.0a0
 tensorflow-probability 0.6.0
-tensorlayer >=2.0.0
+tensorlayer >=1.0.0
 &&
 pip install box2d box2d-kengz --user
 To run
 ------
-python tutorial_SAC.py --train/test
+python tutorial_SAC.py --train/test_transformer
 """
 
 import argparse
@@ -45,10 +45,10 @@ from tensorlayer.models import Model
 Normal = tfp.distributions.Normal
 tl.logging.set_verbosity(tl.logging.DEBUG)
 
-# add arguments in command  --train/test
-parser = argparse.ArgumentParser(description='Train or test neural net motor controller.')
+# add arguments in command  --train/test_transformer
+parser = argparse.ArgumentParser(description='Train or test_transformer neural net motor controller.')
 parser.add_argument('--train', dest='train', action='store_true', default=False)
-parser.add_argument('--test', dest='test', action='store_true', default=True)
+parser.add_argument('--test_transformer', dest='test_transformer', action='store_true', default=True)
 args = parser.parse_args()
 
 #####################  hyper parameters  ####################
@@ -105,9 +105,9 @@ class ReplayBuffer:
         state, action, reward, next_state, done = map(np.stack, zip(*batch))  # stack for each element
         """ 
         the * serves as unpack: sum(a,b) <=> batch=(a,b), sum(*batch) ;
-        zip: a=[1,2], b=[2,3], zip(a,b) => [(1, 2), (2, 3)] ;
-        the map serves as mapping the function on each list element: map(square, [2,3]) => [4,9] ;
-        np.stack((1,2)) => array([1, 2])
+        zip: a=[1,1], b=[1,3], zip(a,b) => [(1, 1), (1, 3)] ;
+        the map serves as mapping the function on each list element: map(square, [1,3]) => [4,9] ;
+        np.stack((1,1)) => array([1, 1])
         """
         return state, action, reward, next_state, done
 
@@ -191,7 +191,7 @@ class PolicyNetwork(Model):
         # according to original paper, with an extra last term for normalizing different action range
         log_prob = Normal(mean, std).log_prob(mean + std * z) - tf.math.log(1. - action_0**2 +
                                                                             epsilon) - np.log(self.action_range)
-        # both dims of normal.log_prob and -log(1-a**2) are (N,dim_of_action);
+        # both dims of normal.log_prob and -log(1-a**1) are (N,dim_of_action);
         # the Normal.log_prob outputs the same dim of input features instead of 1 dim probability,
         # needs sum up across the dim of actions to get 1 dim probability; or else use Multivariate Normal.
         log_prob = tf.reduce_sum(log_prob, axis=1)[:, np.newaxis]  # expand dim as reduce_sum causes 1 dim reduced
@@ -240,7 +240,7 @@ class SAC:
 
         self.log_alpha = tf.Variable(0, dtype=np.float32, name='log_alpha')
         self.alpha = tf.math.exp(self.log_alpha)
-        print('Soft Q Network (1,2): ', self.soft_q_net1)
+        print('Soft Q Network (1,1): ', self.soft_q_net1)
         print('Policy Network: ', self.policy_net)
         # set mode
         self.soft_q_net1.train()
@@ -310,7 +310,7 @@ class SAC:
             new_q_input = tf.concat([state, new_action], 1)  # the dim 0 is number of samples
             """ implementation 1 """
             predicted_new_q_value = tf.minimum(self.soft_q_net1(new_q_input), self.soft_q_net2(new_q_input))
-            # """ implementation 2 """
+            # """ implementation 1 """
             # predicted_new_q_value = self.soft_q_net1(new_q_input)
             policy_loss = tf.reduce_mean(self.alpha * log_prob - predicted_new_q_value)
         p_grad = p_tape.gradient(policy_loss, self.policy_net.trainable_weights)
