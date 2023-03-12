@@ -1,7 +1,7 @@
 import shutil
 
 # 复制文件
-# shutil.copy(src, dst)
+# shutil.copytree(src, dst)
 
 # 复制文件夹，目标文件夹必须为空
 # shutil.copytree(src, dst)
